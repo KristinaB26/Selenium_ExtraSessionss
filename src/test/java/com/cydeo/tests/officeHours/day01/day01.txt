@@ -31,4 +31,5 @@ ____________________
 	6- Click on Sign Up Button (by using name locator)  
 	7- Verify title equals: 
 	   Expected: Signup Confirmation
+	   --
 
