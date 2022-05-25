@@ -1,0 +1,119 @@
+Selenium ClassNotes 
+
+
+===========================
+
+Java 				--> it is programming language in which we write our tests
+INTELLIJ 			--> we use it to write and execute our code/tests (just like Eclipse)
+Library/Dependency 	--> set of prewritten classes,methods which we can add to our code and use
+Selenium 			--> automation tool/library, just another dependency
+Maven 				--> build management tool, we use it to manage depedencies, for example we added selenium and java 
+pom.xml			    --> brain of maven, we put depedendices and settings here.
+
+===========================
+
+
+driver.get(url)				--> navigates to website
+driver.navigate().to(url)	--> navigates to website
+
+driver.navigate().back()	--> goes back previuos website
+driver.navigate().forward()	--> goes forward after goes back
+driver.navigate().refresh()	--> refresh the page
+
+driver.close()				--> close the current tab
+driver.quit()				--> closes all tabs and everthing
+
+driver.getTitle()			--> gets the current title from browser
+driver.getCurrentUrl 		--> get the url from browser
+
+
+
+
+When we need to get text of the web element
+	
+	1.getText();
+	2.getAttribute("value"); 
+			
+			- There can be placeholder to put default value of this field.Itf you wanna get this value use following 
+					- getAttribute("placeholder"); 
+			
+			- when we pass valid attribute naem to getAttribute method, it will return the value of that attribute.
+		    - if you pass non existing attribute it will return null to you.			
+
+
+element.sendKeys("StrignParameter"); --> It is used to send text to webelement
+
+
+===========================
+
+
+=== Basic Locators ===
+
+	We have 8 different locators (MILESTONES of Selenium)
+
+		1.id
+		2.name
+		3.tagName
+		4.className
+		5.linkText
+		6.PartialLinkText
+		7.xPath
+		8.CSS
+
+		NOTE : Selenium start to read from beginning(page source).if seleium found webelement,selenium stops there
+
+	== 1. ID == 
+
+		- It will be always UNIQUE and first locator we are looking for.if it is not dynamic we can use directly id to find element.REFRESH the page couple of times to understand it is dynamic or not.
+
+
+		   Ex : WebElement disbutton=driver.findElement(By.id("disappearing_button"));
+
+	== 2. NAME == 
+
+
+		- if we cannot use id or it is dynamic we look for name.Name locator is not dynamic %99,9 time
+		- Name can be DUP ( for ex Radiobutton)
+
+
+		   Ex : WebElement email=driver.findElement(By.name("email"));
+        		email.sendKeys("test@outlook.com");
+
+
+			OR
+
+		   Ex : driver.findElement(By.name("email")).sendKeys("test@outlook.com");
+
+	== 3. TAGNAME == 
+
+		- We can use tagName if searching tag is top of the page or ONLY ONE tag is in page
+
+		<input type="text" name="full_name">
+
+		input --- tag
+
+			Ex : WebElement fullname=driver.findElement(By.tagName("input"));
+
+	== 4. CLASSNAME == 
+
+		Disadvantages : if there is a space in classname value we can not use.it means there are different classes
+
+
+		Classes are unique.They used in order to locate more than one elements.They generally can used with findElements. 
+
+			Ex : driver.findElement(By.className("h3"))
+
+	== 5. LINKTEXT == 
+
+
+			Ex :  WebElement multiple_buttons = driver.findElement(By.linkText("Multiple Buttons"));
+
+	== 6. PARTIALLINKTEXT == 
+
+			Ex : WebElement partialLinks=driver.findElement(By.partialLinkText("Sign"));
+
+
+
+
+
+
