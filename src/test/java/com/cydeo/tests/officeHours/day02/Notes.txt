@@ -73,6 +73,7 @@ element.sendKeys("StrignParameter"); --> It is used to send text to webelement
 
 
 		- if we cannot use id or it is dynamic we look for name.Name locator is not dynamic %99,9 time
+		- Seen mostly form elements
 		- Name can be DUP ( for ex Radiobutton)
 
 

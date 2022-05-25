@@ -11,7 +11,7 @@ ____________________
 	2- Go to: https://practice.cydeo.com/ 
 	3- Click to Multiple Buttons 
 	4- Click "Don't Click" button 
-	5- Verify Result is : "Now it's gone"
+	5- Verify Result is : "Now it's gone!"
 	  
 
 
