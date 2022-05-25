@@ -34,11 +34,11 @@ When we need to get text of the web element
 	1.getText();
 	2.getAttribute("value"); 
 			
-			- There can be placeholder to put default value of this field.Itf you wanna get this value use following 
+			- There can be placeholder to put default value of this field.If you wanna get this value use following
 					- getAttribute("placeholder"); 
 			
-			- when we pass valid attribute naem to getAttribute method, it will return the value of that attribute.
-		    - if you pass non existing attribute it will return null to you.			
+			- when we pass valid attribute name to getAttribute method, it will return the value of that attribute.
+		    - if you pass non existing attribute it will return null
 
 
 element.sendKeys("StrignParameter"); --> It is used to send text to webelement
@@ -74,7 +74,7 @@ element.sendKeys("StrignParameter"); --> It is used to send text to webelement
 
 		- if we cannot use id or it is dynamic we look for name.Name locator is not dynamic %99,9 time
 		- Seen mostly form elements
-		- Name can be DUP ( for ex Radiobutton)
+		- Name can be DUPLICATE ( for ex Radiobutton)
 
 
 		   Ex : WebElement email=driver.findElement(By.name("email"));
@@ -102,7 +102,7 @@ element.sendKeys("StrignParameter"); --> It is used to send text to webelement
 
 		Classes are unique.They used in order to locate more than one elements.They generally can used with findElements. 
 
-			Ex : driver.findElement(By.className("h3"))
+			Ex : driver.findElements(By.className("h3"))
 
 	== 5. LINKTEXT == 
 
