@@ -1,0 +1,39 @@
+
+
+DAY3- HOMEWORK1
+
+	TC #2: NextBaseCRM, locators, getText(), getAttribute() practice 
+	1- Open a chrome browser 
+	2- Go to: https://login1.nextbasecrm.com/  
+	3- Verify “remember me” label text is as expected: 
+	Expected: Remember me on this computer 
+	4- Verify “forgot password” link text is as expected: 
+	Expected: Forgot your password? 
+	5- Verify “forgot password” href attribute’s value contains expected: 
+	Expected: forgot_password=yes  
+	 
+
+PS: Inspect and decide which locator you should be using to locate web 
+elements. 
+ 
+DAY3- HOMEWORK2
+	TC #5: NextBaseCRM, locators, getText(), getAttribute() practice 
+	1- Open a chrome browser 
+	2- Go to: https://login1.nextbasecrm.com/?forgot_password=yes 
+	3- Enter incorrect username into login box: 
+	4- Click to `Reset password` button 
+	5- Verify “error” label is as expected 
+	Expected: Login or E-mail not found 
+
+
+DAY4- HOMEWORK
+
+	TC #3: Practice Cydeo/ForgotPassword URL verification  
+	1. Open Chrome browser  
+	2. Go to http://practice.cydeo.com/forgot_password     
+	3. Enter any email into input box  
+	4. Click on Retrieve password  
+	5. Verify URL contains:   
+	Expected: “email_sent”  
+	6. Verify textbox displayed the content as expected.  
+	Expected: “Your e-mail’s been sent!”  

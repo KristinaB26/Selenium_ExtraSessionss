@@ -1,0 +1,271 @@
+Notes.txt
+
+
+	WHY WE NEED XPATH / CSS  ?
+
+				• When we try to find element on page, sometimes we cannot use any of the 6 locators. They will not be sufficient to find the element we are interested in on the page.
+				• In these cases we write our own custom locators based on certain syntax.
+				• Xpath and CSS
+
+
+	= XPATH =
+
+			- XPath is defined as XML path. It is a syntax or language for finding any element on the web page using XML path expression. XPath is used to find the location of any element on a webpage using HTML DOM structure.
+
+			== Absolute XPATH  ==
+
+				- When page source is changed it will not work ( Hard Coded )
+				- It is the direct way to find the element, but the DISADVANTAGE of the absolute XPath is that, if there are any changes made in the path of the element then that XPath gets failed.
+
+				Ex  Syntax : Absolute Xpaths start with /html/body/div/label......
+
+
+			== Relative XPATH ==
+
+
+				-  Relative xpath starts with double slashes and looks anywhere in the page. If there is double slashes in the beginning, it looks anywhere in the page.
+
+
+					//li/a : find li element on the page find it is child which has a tag
+
+
+				1- LOCATING ELEMENT WITH KNOWN ATTIRBUTE & VALUE
+
+					 // TagName[@attribute=‘value’]
+
+					 // button[@onclick= ‘button1()’]
+
+						- Find any button element that has an attribute onlick which is equal to button1()
+
+
+				2- LOCATING ELEMENT WITH KNOWN VALUE ONLY
+
+					 //button[@*= ‘button1()’ ]
+
+							• Find any button element that has an ANY attribute which is equal to button1()
+							• Star(*) means ANY attribute in xpath
+							• We can replace TagName with * also
+
+                3- LOCATING ELEMENT WITH KNOWN VISIBLE TEXT
+
+
+					  //TagName[text()=‘exact text’]
+
+					       text() -- is keyword for visible text
+
+						 OR
+
+					   //TagName[.=‘exact text’]
+
+					        .	   -- is symbol for visible text
+
+
+						Ex 1 :
+
+							 	//button[text()=‘Button 1’]
+
+								• Find any button element that has an text which is equal to Button 1
+								• It is case and space sensitive it must be EXACT MATCH
+
+						Ex 2 :
+							 	//*[text()=‘Button 1’]
+
+								• Find ANY element that has an text which is equal to Button 1
+
+						Ex 3 :
+
+								//TagName[contains(text(),‘exact text’)]
+
+								- Keyword for looking any part of matching text
+								- Following syntax is used for locating elements containing exact text within an element
+
+
+					4- LOCATING DYNAMIC ELEMENT WITH STARTS WITH
+
+						- The following syntax could be used when first part of the attribute is static.
+
+							//TagName[starts-with(@Attribute, ‘value’)]
+
+
+					5- LOCATING DYNAMIC ELEMENT WITH CONTAINS
+
+
+							//TagName[contains(@Attribute, ‘value’)]
+
+
+ 					6- IF THERE ARE MULTIPLE ELEMENTS FOR AN XPATH?
+
+					 	- Selenium will select the first element in the path if there are multiple candidates for a given XPATH. If you want to specify the location of the element square brackets with the sequence number should be used
+
+					 	-- if they have same PARENT
+
+							• //button[2] --->  give me the second button element that you find in same family
+							• //div/a[2]  --->  give me  the second child of div that element with a tag .
+
+						-- If they don’t have SAME PARENT but xpath giving multiple matches use this formula ;
+
+							FORMULA :   (//p)[index]
+
+							Example:    (//a[contains(text(), 'Dynamic')])[2]
+
+
+					7- LOCATING ELEMENTS WITH MULTIPLE ATTRIBUTES
+
+						- AND logic applies in this formula, if both attributes matching then it will find element
+
+							• //TagName[@attribute1=‘value1’] [@attribute2=‘value2’]
+
+							• //TagName[@attribute1=‘value1’ and @attribute2=‘value2’]
+
+
+						- OR logic applies in this formula, if one of the attributes matching then it will find element (or elements)
+
+							• //TagName[@attribute1=‘value1’ or @attribute2=‘value2’]
+
+
+
+ 					8- LOCATING ELEMENTS RELATIVE TO KNOWN ELEMENT
+
+ 					  	- If an element do not have a unique attribute we need to locate the element with respective to a known element with unique attribute.
+
+	 					 1- LOCATING PARENT ELEMENT
+
+							• //KnownPath/parent::*
+							        Or
+							• //KnownPath/parent: : TagName
+
+							Example: //button[@name='button2']/parent::*     -- Will give parent of button
+
+						2- LOCATING FOLLOWING/PRECEDING SIBLINGS
+
+							• //KnownPath/following-sibling::*
+								    Or
+							• //KnownPath/following-sibling: : TagName
+
+							Example: //button[@name='button2']/ following-sibling ::*
+
+
+							• //KnownPath/preceding-sibling ::*
+							       Or
+							• //KnownPath/preceding-sibling ::TagName
+
+						    Example: //button[@name='button2’]/preceding-sibling::*
+
+
+
+	 			- How do we go from PARENT to CHILD using xpath?
+
+	  				   - We use /
+	    				//tagName[@attribute='value']/childTag
+
+				- How do we go from CHILD to PARENT using xpath?
+
+	  				   - /.. --> this will take us from child to parent web element
+
+	    			   //tagName[@attribute='value']/..     --> will go to the parent of this webElement
+
+
+
+
+		= CSS =
+
+			1- LOCATING ELEMENT WITH ID
+
+						 TagName#id_Value
+
+						# ----- Symbol looking for ID
+
+						Ex :     button#disappearing_button
+
+				• Find any button element that has an attribute id which is equal to disappearing_button
+				• We don’t need to put * to look all elements just like XPATH, if we remove the
+					tag it will look for all elements
+
+
+			2- LOCATING ELEMENT WITH CLASS
+
+				• Following syntax can be used for locating elements using class.
+
+						Syntax : 	TagName. class Value
+
+						Symbol(.)----- looking for Class
+
+						Ex : 		a.nav-link
+
+				• Find a link element that has an attribute class which is equal to nav-link
+
+						Ex :  		 . nav-link
+
+				• Find ANY element that has an attribute class which is equal to nav-link
+
+			3- LOCATING ELEMENT WITH CLASS (MORE THAN ONE)
+
+						Syntax : 		button.btn.btn-primary
+
+				• Find Button element that has an attributes class which are equal to btn and btn-primary
+				• Space means different class
+
+			4- LOCATING ELEMENT WITH KNOWN ATTIRBUTE & VALUE -
+
+						Syntax : 		TagName[attribute=‘value’]
+
+				• Following syntax can be used for locating elements when at least one of the attribute value is
+				unique and static.(not changed)
+
+						Ex : 			button[onclick= ‘button1()’ ]
+
+				• Find any button element that has an attribute onlick which is equal to button1()
+
+						Ex :  			[onclick= ‘button1()’ ]
+
+				• Find ANY element that has an attribute onlick which is equal to button1()
+				• Removing tag means look all elements
+
+
+			5- LOCATING ELEMENTS WITH MULTIPLE ATTRIBUTES
+
+				• You can use multiple attributes at the same time
+
+					Syntax :  	TagName[attribute1=‘value1’][attribute2=‘value2’]
+
+				• AND logic applies in this formula, if both attributes matching then it will find element
+
+			6- HOW TO LOCATE CHILD ELEMENT IN CSS ? - ONLY ONE LEVEL
+
+				• Xpath: //tag/tag/tag  we use / for navigating to child element
+				• Css: tag>tag>tag  we use > for navigating to child element
+
+				Example:
+
+				• div>h3  -- find any h3 element whose parent is div
+				• ul>li>a -- find ul, then its child li, then its child a
+
+
+
+
+DIFFERENCE BETWEEN CSS AND XPATH ---    INTERVIEW QUESTION
+
+			-- Css is slighty faster than XPath on IE,other browser is negligible
+			-- Css is easier and write,clear syntax
+
+						= CSS VS XPATH =
+
+			1.Css cannot locate element using text
+				xpath://*[.=“Don’t Click”]
+				css: NA
+
+			2.Css cannot find from matches based on index(different parents)
+				xpath:(xPathFormula)[indexNumber]
+				css: NA
+
+			3.Css cannot locate child to parent
+				xpath: //button/..               --> move to parent
+				css: NA
+
+
+
+
+
+
+
+
