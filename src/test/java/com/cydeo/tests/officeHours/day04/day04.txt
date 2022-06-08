@@ -1,0 +1,110 @@
+day04.txt
+
+
+
+
+
+======= implicitlyWait vs Thread.sleep ========
+
+
+	= Thread.sleep() =
+
+			 This method is from java, not selenium. It pauses the program based on given milisecond.
+	It waits for the duration given. be careful not to use too long or to less. It is recommended to minimize the use of thread.sleep using too much slows the execution of tests.
+
+		- call every time you need
+		- wait for whole duration,not dynamic(static)
+		- not selenium wait
+
+	= Implicitly Wait =
+
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); // // time should be over visibility time
+
+		- call it once,(set of driver)
+		- waits while trying to findElement
+		- wait until element found or time runs out(dynamic)
+		- applies for all findElement methods
+
+ === HOW FIND ELEMENT METHODS WORK ? ===
+
+	We provide locator and try to find element to do same actions using findElement method
+
+
+        1- if element is found it will return WebElement
+
+        2- if element is not found
+
+            - it will check ImplicitlyWait
+
+                YES :
+                	- it will keep trying to locate element up to time  we set
+                    - if it finds it inside this time it will return WebElemnt
+                    - Otherwise it  will throw NSE (No Such Element)
+
+                 NO :  it  will throw NSE (No Such Element)
+
+
+====== isDisplayed ========
+
+Some Elements on the page can be hidden from the display on the page by using common css properties like
+
+	hidden attribute on element
+		style="display:none;
+	Elements with these attributes are not visible.
+
+Selenium WebElement have a method called isDisplayed() to check if an element is visible or not
+
+====== Radio Buttons ======
+
+	Radio button is a type of elements in which only one option can be selected among group of options
+
+		(Example: Gender - Male,Female,Other)
+
+	Based on the requirements you might or might not have default option selected.
+
+	//how to check radio button selected or not ?
+	isSelected() --> if radio buttons selected it will return true, if not it will return false.
+
+	//how to select radio button ?
+	we can use click() method for selecting radio buttons
+
+
+====== Checkboxes ======
+
+	Checkboxes are type of input elements which can be selected or unselected.
+
+	When we have group of checkboxes selecting or unselecting one checkbox does NOT affect on the selection of the other one.
+
+	Just like a radio buttons we use isSelected() method to check checkboxes are selected or not.
+	to select or unselect the checkboxes we use click() method.
+
+
+
+====== TASKS =======
+
+
+Task for Etsy
+
+		TC: Etsy checkbox and radio button
+		1. Go to https://www.etsy.com
+		2. Search for “wooden spoon”
+		3. Click on filters
+		4. Select free shipping, on sale
+		5. Select under $25 Click on apply filters
+		6. Print count of results
+
+Task IQ :  It is very slow website. Just try to locate your element and run.It will take 2-3 min to give result
+
+
+
+        1. Navigate to: https://moneygaming.qa.gameaccount.com/
+        2. Click the JOIN NOW button to open the registration page
+        3. Select a title value from the dropdown
+        4. Enter your first name and surname in the form
+        5. Check the tickbox with text "I accept the Terms and Conditions and certify that I am over the age of 18.
+        6. Submit the form by clicking the JOIN NOW button
+        7. Validate that a validation message with text "This field is required" appears under the date of birth box
+        8. Validate that 18 "This field is required" messages  appears
+
+
+Practice website : https://www.demoblaze.com/
