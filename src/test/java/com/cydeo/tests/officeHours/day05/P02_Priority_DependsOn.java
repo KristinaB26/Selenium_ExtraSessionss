@@ -35,6 +35,7 @@ public class P02_Priority_DependsOn {
         System.out.println(username+" is deleted");
         username="";
 
+
     }
 
     @Test@Ignore
