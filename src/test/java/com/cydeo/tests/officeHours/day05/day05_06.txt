@@ -1,0 +1,72 @@
+Tasks
+
+
+- MoneyGaming - You already have it from last week 
+
+- Alert 
+
+		Task 1  -- HTML POP UP 
+
+			- Open "https://www.primefaces.org/showcase/ui/overlay/confirmDialog.xhtml?jfwid=5f126"
+			- Click Confirm button
+			- Click YES from pop up 
+			- Verify message equals "You have accepted" 
+
+		Task 2  -- INFORMATION 
+
+			- Open "http://www.uitestpractice.com/Students/Switchto"
+			- Click Alert 
+			- Click OK button from Alert 
+			- Verify message equals "You have clicked on ok button in alert window" 
+
+        Task 3  -- CONFIRM 
+
+			- Open "http://www.uitestpractice.com/Students/Switchto"
+			- Click Confirm 
+			- Click Cancel button from Alert 
+			- Verify message equals "You pressed Cancel in confirm window" 
+ 
+        Task 4  -- PROMPT 
+
+			- Open "http://www.uitestpractice.com/Students/Switchto"
+			- Click Prompt 
+			- Send name as "Mike" into this alert field 
+			- CLick OK 
+			- Verify  message contains "Mike" 
+
+- IFrame
+
+		Task 1   
+
+			- Open "https://demoqa.com/frames"
+			- Verify child frames texts are equal : "This is a sample page" 
+
+
+		Task 2   
+
+			- Open "http://practice.cybertekschool.com/nested_frames"
+			- Switch to middle frame 
+			- Verify text is equal "MIDDLE"
+		    - Switch to right frame
+		    - Verify text is equal "RIGHT"	
+		    - Switch to bottom frame 
+		    - Verify text is equal "BOTTOM"
+
+
+IQ : TECH CRUNCH 
+
+Using any test automation framework, Java language (except record/play tools) and Maven dependency management, please do following:
+	
+	1- Go to https://techcrunch.com/
+	2- For “The Latest News” list, verify followings;
+		a. each news has an author
+		b. each news has an image
+	3- Click one of news from “The Latest News” list to reach the full content and verify followings;
+		a. the browser title is the same with the news title
+		b. the links within the news content
+
+
+
+
+
+

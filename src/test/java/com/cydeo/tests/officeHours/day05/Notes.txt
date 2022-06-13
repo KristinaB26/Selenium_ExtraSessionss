@@ -1,0 +1,188 @@
+
+
+
+======= What is TestNG ? =======
+
+- It is a Unit Testing Framework 
+- Stands For Test New Generation 
+- TestNG is designed to cover all categories of tests: unit, functional, end-to-end, integration, etc...
+- Need to have JDK 8 or higher 
+
+
+Annotations 
+
+- Every @Test annotation is independent from each other (By default)
+- We can create dependency in between test with the help of dependsOnMethods keyword 
+- They will run in alphabetical order (By default )
+- We can prioritize tests order with priority keyword 
+
+
+@Test         --> is the main annotation where we create the test
+@BeforeMethod --> This method will run before EACH TEST 
+@AfterMethod  --> This method will run after EACH TEST 
+@BeforeClass  --> Regardless of however many tests we have, these will only run ONCE before everything in the class.
+@AfterClass   --> Regardless of however many tests we have, these will only run ONCE after everything in the class
+
+
+Q: How can we Ignore Tests ? 
+- We can add before @Test @Ignore annotation
+
+
+TestNG Annotations LifeCycle 
+
+		BeforeClass
+		Before Method -- TC1 -- After Method
+		Before Method -- TC2 -- After Method
+		Before Method -- TC3 -- After Method
+		AfterClass
+
+
+======= TestBase =======
+
+we collected whatever common to all testcases here. Like before and after method we created all the necessary object like driver, wait etc ..... So we dont need to copy/paste anymore. When we create the test we extend TestBase
+
+       - Contains properties and actions for all the tests in it:
+            Decleration of our variables
+            Before and After Method
+            initaliziing of our driver
+        - Nothing related the project. it is general
+        - We can use TestBase with little changes with the new application
+
+
+======= DropDowns ======
+	
+	Dropdown menu is a menu that offers a list of options. Most of the time we only allowed to choose one option.
+
+	== SELECT DROPDOWNS ==
+
+		
+		How to use SELECT class
+			
+			1.make sure the dropdown has select tag.
+			2.locate the dropdown just like any other element
+			3.create object using Select class by passing the element that we locate steop 2 as a constructor
+
+			Select select = new Select(dropdownElement);
+
+		
+		SELECT methods
+			
+			getOptions()             --> returns all  available options from the dropdown list.
+			getFirstSelectedOption() --> returns webelement, first selected option
+			.
+			.
+			.
+
+		= SelectByVisibleText
+
+			selectByVisibleText(“text”) --> selecting based on the visible text of options
+
+		= SelectByValue
+
+			selectByValue(option value) --> select based on value of value attribute
+
+		= SelectByIndex
+
+			selectByIndex(indexNumber)  --> select based on index of options(starts from 0)
+
+
+	= NO SELECT DROPDOWNS =
+
+		Think it as a WebElement ( List )
+
+		
+		- If we dont have select tag, we locate dropdown just like any other webelements and to see options with clicking or hovering over to it.
+		
+		- To get all options from dropdown, we can use common locator between them(exp:classname, tagname etc)
+		then we can use List methods to get the size and expected options from list.
+		
+		- we use click() method to click different options, we can either locate the option seperately or use index of the option from the list.
+
+
+======= Exceptions and problem Solving  =======
+
+   --> NoSuchElementException
+
+		1. locator might be wrong(dynamic or not correct)
+		2. not enough wait time
+		3. frame or iframe
+
+   -->	StaleElementException
+   
+		- The element has been deleted 
+		- Usually it throws exception after basic navigations 
+		- Driver loses its reference of the web element and throws exception 
+
+		Ex : 
+			back();
+			forward();
+
+
+
+
+======= Alert  =======
+
+	we have 2 different way of handling pop ups, based on their structrue
+
+		1- HTML Alerts
+                - We can handle as regular way
+
+        2- Js Alerts
+                - We need to use Alert interface from Selenium to handle
+                - type of Js Alert
+                    1- Information  --> ONLY accept
+                    2- Confirmation --> Accept or Dismiss
+                    3- Prompt       --> accept / sendkeys / dismiss
+		
+
+		Alert alert = driver.switchTo().alert();
+		
+		and we have accept, dismiss, sendkeys, getText method for alerts.
+		
+		If there is no  alert on the webpage it will throw 
+		
+		NoAlertPresentException: no such alert
+
+
+======= IFrame  =======
+
+	1.NameOrID
+
+		        driver.switchTo().frame("mce_0_ifr");
+
+	2.Index
+
+		        driver.switchTo().frame(0); // another one goes 0,1,2,3,4,5,6,7 etc...
+
+	3.WebElement
+
+				WebElement iframe=driver.findElement(By.tagName("iframe"));
+			    
+			    driver.switchTo().frame(iframe);
+
+
+	== Turning Back to Parent Or Main Page ==
+
+	1. Go back up one level from iframe
+		
+		driver.switch().parentFrame();
+
+	2.  Go back to top level html document
+
+		driver.switchTo().defaultContent();  
+
+  Examples :
+
+  HTML(Default Content)
+
+  	0frame-top(parent frame)
+  		0 left
+  		1 middle
+  		2 right
+  	1frame-bottom
+
+    NOTE :
+        - We can only switch one at a time, cannot switch to grandchild directly.
+		- Cannot switch to siblings, only parent to child
+
+
