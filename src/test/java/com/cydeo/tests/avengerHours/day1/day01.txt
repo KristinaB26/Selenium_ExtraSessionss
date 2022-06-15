@@ -1,0 +1,26 @@
+Day01 - 06.15.2022
+
+
+		Task 1  -- isDisplayed/isEnabled
+
+
+            1-Navigate to "http://www.uitestpractice.com/"
+            2-Verify main page is launched;
+             -"Testing Controls" Tab should be displayed on left top (visible and enabled)
+
+
+		Task 2  -- SearchName inputBox
+
+            1-Navigate to website "http://www.uitestpractice.com/";
+            2-Click on Home tab
+            3-Search for the name "Mike Johnson"
+            4-Verify "There are zero students with this search text Page 0 of 0" msg displayed on page
+
+
+        Task 3  -- iframe
+
+            1- Navigate to "http://www.uitestpractice.com/"
+            2- Type the name into "Enter your name" inputbox -> "Mike Johnson"
+            3- Retrieve the name from inputbox -> "Mike Johnson"
+            4- Click on the link "uitestpractice.com"
+            5- Verify "Drag and Drop control" menu is displayed in iframe
