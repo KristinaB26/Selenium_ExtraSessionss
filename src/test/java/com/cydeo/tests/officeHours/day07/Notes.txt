@@ -1,0 +1,59 @@
+
+Day 07 - Tuesday 
+
+Day 08 - Wednesday 
+
+
+
+- WebTables
+
+		table row  -- tr 
+		table data -- td
+
+        Tables are made of <thead> and <tbody>
+
+        	<thead> --> this is the table header, here we have table column names
+        		<tr> table row, indicates one whole row
+        			<th> --> this tag indicates a cell that is used for table headers
+
+        	<tbody> this is where the data is
+        		<tr> table row, indicates one whole row
+        			<td> --> cell in a table body
+
+
+- Windows and Tabs
+
+    - In selenium there is no difference between tabs and windows.
+    - Selenium can focus & control one window at a time
+    - When we open the page first time it points that page only.
+    - When we open a new tab/window, it will still be looking at the old window.
+    - To do any interaction with the new window we have to switch to new window.
+
+   How ?
+
+   - Window Handle
+
+		- A randomly generated unique alpha-numeric string that assigned to the tab or window when it's open for the first time.
+
+			For example : CDwindow-289A5E491DD3D41196B5372DFF19885F
+
+		- Every tab and window get their own unique handle value like above.
+		- Selenium can use it to switch to certain tab or window.
+
+    - driver.switchTo().window(handle);
+
+    	driver.getWindowHandle() --> returns the handle of the current windows
+
+    	driver.getWindowHandles()--> returns the set of the all open windows.
+
+
+
+ - Properties File 
+ 
+ 	Properties file works like a control center, we can manage our browser, urls, database and couple of user information from those those file and it changes values everywhere that we used configuration input.
+	It has key and  value structure.
+
+		- We need ConfigurationReader class to read data from configuration.properties file 
+
+	
+  	

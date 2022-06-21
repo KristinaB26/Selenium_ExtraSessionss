@@ -1,0 +1,68 @@
+
+
+IQ : TECH CRUNCH 
+
+Using any test automation framework, Java language (except record/play tools) and Maven dependency management, please do following:
+	
+	1- Go to https://techcrunch.com/
+	2- For “The Latest News” list, verify followings;
+		a. each news has an author
+		b. each news has an image
+	3- Click one of news from “The Latest News” list to reach the full content and verify followings;
+		a. the browser title is the same with the news title
+		b. the links within the news content
+
+
+
+
+Windows / Tabs 
+
+
+		Task 1   
+
+			- Open "http://automationpractice.com/index.php"
+			- Click twitter from Follow us 
+			- Switch to twitter tab 
+			- Verify title contains "Selenium Framework"
+			- Switch to original tab 
+			- Verify title equals "My Store"
+
+
+
+WebTables 
+		 
+	   Task 1  -- Example 1 Table 
+
+	        - Open "http://practice.cydeo.com/tables"
+	        - Print out all table headers  
+	        - Verify 
+	        		- Table has 6 header 
+
+	   
+	   Task 2  -- Example 1 Table 
+
+	        - Open "http://practice.cydeo.com/tables"
+	        - Print out all table information 
+	        - Verify 
+	        		- Table has 4 row
+
+     	Task 3  -- Example 1 Table 
+
+	        - Open "http://practice.cydeo.com/tables"
+	        - Print out all infromation for firstname ="Frank"
+	        - Verify 
+	        		- email equals "fbach@yahoo.com"
+
+	       NOTE : This task needs to work for 
+	                firstname = Jason
+	                email     = jdoe@hotmail.com	
+
+
+		Task 4 -- Optional 
+
+			- Open "https://www.demoblaze.com/"
+			- Navigate to "Phones"   →  Click "Samsung galaxy s6" and click on "Add to cart" 
+			- Navigate to "Monitors" →  "Apple monitor 24" and click on "Add to cart"
+			- Navigate to "Cart"     →  Delete "Apple monitor 24" from cart.
+			- Verify total equals Samsung galaxy s6 price ( 360 )
+
