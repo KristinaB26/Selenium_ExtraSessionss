@@ -14,6 +14,8 @@ public class ConfigurationReader {
        private static Properties properties = new Properties();
 
 
+
+
     // having static block because static runs first
       static {
 
