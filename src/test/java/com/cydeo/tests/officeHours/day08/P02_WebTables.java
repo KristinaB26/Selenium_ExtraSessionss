@@ -85,4 +85,32 @@ public class P02_WebTables extends TestBase {
 
 
     }
+
+
+    @Test
+    public void getInRelation() {
+        /*
+        Task 3  -- Example 1 Table
+
+	        - Open "http://practice.cydeo.com/tables"
+	        - Print out all infromation for firstname ="Frank"
+	        - Verify
+	        		- email equals "fbach@yahoo.com"
+         */
+        driver.get(ConfigurationReader.getProperty("tablesUrl"));
+
+        String firstname="Jason";
+
+        // dynamic locator to get email for username
+        // xpath -- //table[@id='table1']//td[.="Frank"]/../td[contains(.,"@")]
+
+        String emailLocator="//table[@id='table1']//td[.='"+firstname+"']/../td[contains(.,\"@\")]";
+
+        WebElement email = driver.findElement(By.xpath(emailLocator));
+        System.out.println(email.getText());
+
+        Assert.assertEquals(email.getText(),"jdoe@hotmail.com");
+
+
+    }
 }
