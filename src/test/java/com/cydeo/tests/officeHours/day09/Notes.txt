@@ -1,0 +1,198 @@
+Notes.txt
+
+
+
+
+== File Upload ===
+
+
+	Uploading a file in selenium is very straightforward. </br>
+	Unlike doing it manually where we have to click to open window and select the file,
+	In selenium , we just need to 
+
+	1. identify the input element with type attribute file
+	  
+	  <input type="file" id="file-upload" type="file">
+	
+	2. sendKeys the file location on your computer
+	  
+	3. The just hit upload button.
+
+    
+
+
+==  Actions ==
+
+    - Actions class is used to do advanced user interactions like mouse hover, double click, drag and drop etc.
+    - Actions class is a class comes from selenium and is created by passing the webdriver object as constructor.
+	- Common Actions Class Operations
+		
+		- drag and drop
+		- hover over ,move to element
+		- double click
+		- right click
+		- click and hold
+		- release
+		- and more
+
+        Syntax :   Actions actions = new Actions(driver) ;
+
+    NOTE : Once done composing actions  WE MUST END IT WITH  .perform() or it will not trigger the actions.
+
+   - Drag and Drop is actually consists of few steps below :
+
+		- Move to the draggable element (hover over)
+		- Click and hold
+		- Move to the target element (hover)
+		- Release the mouse hold
+
+    - Actions class method `dragAndDrop` method that access two WebElements as arguments made it easy.
+    - It will drag the first element you passed and drop it second element.
+
+
+    - keyDown and keyUp
+
+    	- keyDown and keyUp method is meant for special modifier keys like
+        - SHIFT
+        - CONTROL
+        - COMMAND
+        - ALT (for windows) OPTIONS for mac
+
+        Example =  
+        			 actions.keyDown(Keys.SHIFT).sendKeys("test").keyUp(Keys.SHIFT).perfrom();
+
+        			 it will make data uppercase 
+
+
+==  JSExecutor ==
+
+    - JavaScriptExecutor and WebDriver both are interfaces.
+    - The only relationship between them is, both are implemented in RemoteWebDriver class.
+    - Since JavaScriptExecutioner has the method executeScript,
+      in order to call the method the driver object need to have JavaScriptExecutioner reference as below by casting
+
+    Syntax :
+        
+        - JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+            jse.executeScript("window.scrollBy(0,250)");
+            
+            jse.executeScript("window.scrollBy(0,-250)");
+          
+            jse.executeScript("arguments[0].scrollIntoView(true)", element);
+           
+            jse.executeScript("arguments[0].click();",element);
+
+
+== Explicit Wait ==
+
+        - Sometimes we might locate the element but we cannot interact with it within certain time.
+    	- We have to wait until it is visible, clicikble, enabled,has certains text or dissapear.
+    	- When we have to wait for these cases, we will use explicit wait.
+
+        Syntax :
+            WebDriverWait wait = new WebDriverWait(driver,10);
+            wait.until(ExpectedConditions.elementToBeClickable(inputBox));
+
+       - ExpectedConditions--> contains conditions for wait that we can wait using WebDriverWait
+       
+       - Explicit wait waits for the condition to complete, once the condition is met, it will stop waiting(dynamic) .
+
+
+    How tu use it ? 
+
+        - call every time you need it
+        - wait until condition is met or time runs out(dynamic)
+        - waits for different conditions(interactible,visible,invisible,text,clicible etc)
+
+
+== SINGLETON ==
+
+			- What is it and how to achieve it?
+			- constrains/limits initialization of class to single instance
+			- a pattern we use  to make sure create only one object of the class
+			- We use it for our Driver utility, so that we can always get the same driver instance everytime we call it.
+
+		What JAVA OOP concept is used here?
+			- Encapsulation
+
+			1- We create private constructor to limit class object creation.
+			2- We create a getter method so that we return the driver in the way that we want to return. 
+
+		Why do you want to get same driver instance all the time?
+			- When creating tests in different classes with different packages, with different design patterns,
+			 with different logics implemented; we need to make we passing around the exact same driver instance
+			  so that our webdriver knows where to go.
+        if you dont use Singleton design pattern?
+            You need to point that object (WebDriver driver)
+	
+	Creating Driver utility that generate single driver (inspired by singleton pattern)
+
+     - Create Driver class
+	 - Add private no arg constructor
+	 - Add private static WebDriver obj field
+	 - Add public static WebDriver getDriver() getter method
+		check if static field is null
+			if null -> create new WebDriver instance and assign to static field
+			if not -> return same WebDriver instance : ChromeDriver in this case.
+
+
+== POM ==
+
+
+
+ POM Design Pattern: 
+
+--> What is POM Design Pattern?
+	- Creating seperate .java classes for the each page of the application.
+	- In these classes we store relevant information to those specific pages.
+	- Such as: web elements and methods.
+
+--> How do we implement POM Design Pattern?
+
+#1- Create constructor and initialize Object of that class and WebDriver using PageFactory.
+
+	PageFactory.initElements(Driver.getDriver(), this);
+
+	Driver.getDriver()--> returns the current driver instance
+	this --> stands for the object of the current class
+
+	--> After initializing we are able to use the web elements of the current class
+	through the object of the current class.
+
+
+#2- Instead of using findElements(); we use @FindBy annotation 
+	- Using @FindBy annotation, we can still use all of the 8 locators that are coming from Selenium, just as we did with findElements() method.
+
+	@FindBy(xpath="//tagName[@attribute='value']")
+	public WebElement example;
+
+
+--> Why are we implementing POM Design Pattern?
+	- clean code / easy to read
+	- less code
+	- re-usable code / not repeatedly locating web elements throughout
+	- easy to maintain / easy to manage
+	- easy to collaborate with your team
+
+
+
+
+FOLDER STRUCTURE 
+	projectFolder
+		-src
+			-test
+				-java
+					- com.cybertek
+						- pages : where we store .java Pages classes
+						- tests : where we store all of our tests
+						- utilities : we we store all re-usable utility class/methods
+
+
+		-configuration.properties : where we store important test data in key=value 
+		-pom.xml : where we add & manage all dependecies in our project
+
+
+
+
+

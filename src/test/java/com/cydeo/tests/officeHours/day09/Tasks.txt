@@ -1,0 +1,121 @@
+Day 09
+
+
+
+Tuesday   --> Driver / FileUpload / Actions /
+Wednesday --> JSExecutor / Explicit Wait / Interview Task ( Demoblaze )
+Thursday  --> Interview Tasks
+
+
+
+
+
+
+
+== File Upload ==
+
+     Task 1
+
+
+       - Go to  "https://testpages.herokuapp.com/styled/file-upload-test.html"
+       - Upload file into Choose File
+             NOTE : Create a file called as UploadTest.txt in project to upload ( I will show how we can )
+       - Choose General File
+       - Click Upload button
+       - Verify Expected message equals "You uploaded a file. This is the result."
+
+
+
+== Actions ==
+
+     Task 1
+
+       - Go to  "http://automationpractice.com/index.php"
+       - Hover over on Dresses button
+       - Verify following subCategories are displayed
+
+       				Casual Dresses
+       				Evening Dresses
+       				Summer Dresses
+
+
+     Task 2
+
+ 	   - Go to  "https://www.globalsqa.com/demo-site/draganddrop/"
+       - Drag and Drop "High Tatras" and "High Tatras 2" into "Trash"
+       - Verify Trash has 2 photo
+
+
+
+     Task 3
+
+	   - Go to  "http://secure.smartbearsoftware.com/samples/TestComplete11/WebOrders/Login.aspx"
+       - Fill form with following information
+			fullname : TEST
+			email    : TEST
+	   - Click Login Button
+	   - Verify error message equals "Invalid Login or Password."
+
+
+
+== JSExecutor ==
+
+	 Task 1
+
+
+       - Go to  "https://techcrunch.com/"
+       - Click TechCrunch from Footer > About > TechCrunch
+       - Verify title contains "TechCrunch"
+
+
+	 Task 2
+
+		- Go to https://www.etsy.com
+		- Search for “wooden spoon”
+		- Click on filters
+		- Select free shipping  (use checkbox to click freeshipping. DON'T USE label tagged element to handle )
+		- Click apply filters
+		- Print count of results
+
+
+== Explicit Wait ==
+
+
+	Task 1
+
+		- Go to "https://testpages.herokuapp.com/styled/dynamic-buttons-disabled.html"
+		- Click buttons in order
+		- Verify messages are equal after click all buttons
+				- All Buttons Clicked
+				- Clickable Buttons
+				- Click Buttons In Order
+
+
+== Interview Task ( Demoblaze ) ==
+
+
+SHOP: https://www.demoblaze.com/index.html
+
+
+	• Customer navigation through product categories: Phones, Laptops and Monitors
+	• Navigate to "Laptops" → "Sony vaio i5" and click on "Add to cart". Accept pop up confirmation.
+	• Navigate to "Phones" → "Samsung galaxy s6" and click on "Add to cart". Accept pop up confirmation.
+	• Navigate to "Monitors" → "Apple monitor 24" and click on "Add to cart". Accept pop up confirmation.
+	• Navigate to "Cart" → Delete "Apple monitor 24" from cart.
+	• Click on "Place order".
+	• Fill in all web form fields.
+	• Click on "Purchase"
+	• Capture and log purchase Id and Amount.
+	• Assert purchase amount equals expected.
+	• Click on "Ok"
+	• Verify that there is no product in the cart
+
+
+NOTE : We will create Page Object Model (POM) to solve this task
+
+
+
+
+
+
+
