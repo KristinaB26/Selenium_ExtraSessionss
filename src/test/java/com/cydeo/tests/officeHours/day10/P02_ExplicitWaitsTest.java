@@ -25,7 +25,6 @@ public class P02_ExplicitWaitsTest extends TestBase {
 
         driver.get("https://testpages.herokuapp.com/styled/dynamic-buttons-disabled.html");
 
-        WebDriverWait wait=new WebDriverWait(driver,10);
 
         WebElement start = driver.findElement(By.id("button00"));
         System.out.println(start.isEnabled());     // true
@@ -41,7 +40,8 @@ public class P02_ExplicitWaitsTest extends TestBase {
 
 
         start.click();
-        wait.until(ExpectedConditions.elementToBeClickable(one));
+        //wait.until(ExpectedConditions.elementToBeClickable(one));
+        BrowserUtils.waitForClickablility(one,10);
 
         one.click();
         wait.until(ExpectedConditions.elementToBeClickable(two));
