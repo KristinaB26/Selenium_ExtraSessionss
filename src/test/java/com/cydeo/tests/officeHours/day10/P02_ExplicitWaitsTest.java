@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class P02_ExplicitWaitsTest extends TestBase {
@@ -49,6 +50,31 @@ public class P02_ExplicitWaitsTest extends TestBase {
         wait.until(ExpectedConditions.elementToBeClickable(three));
 
         three.click();
+
+        // locator for texts buttonmessage
+
+
+        String expectedResult = "All Buttons Clicked";
+        String actualResult = driver.findElement(By.cssSelector("#buttonmessage")).getText();
+        Assert.assertEquals(actualResult,expectedResult);
+
+        // Assert.assertEquals(driver.findElement(By.cssSelector("#buttonmessage")).getText(),expectedResult);
+
+
+
+         expectedResult = "Clickable Buttons";
+         wait.until(ExpectedConditions.textToBe(By.cssSelector("#buttonmessage"),"Clickable Buttons"));
+         actualResult = driver.findElement(By.cssSelector("#buttonmessage")).getText();
+         Assert.assertEquals(actualResult,expectedResult);
+
+
+
+
+         expectedResult = "Click Buttons In Order";
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#buttonmessage"),"Click Buttons In Order"));
+        actualResult = driver.findElement(By.cssSelector("#buttonmessage")).getText();
+        Assert.assertEquals(actualResult,expectedResult);
+
 
 
     }
