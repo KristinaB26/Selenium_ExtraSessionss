@@ -3,6 +3,7 @@ package com.cydeo.tests.officeHours.day09;
 import com.cydeo.tests.base.TestBase;
 import com.cydeo.tests.utilities.BrowserUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -126,6 +127,47 @@ public class P02_Actions extends TestBase {
 
 
         Assert.assertTrue(trashElements.size()==2);
+
+    }
+    @Test
+    public void keyboardAction() {
+        Actions actions=new Actions(driver);
+
+        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete11/WebOrders/Login.aspx");
+
+        WebElement username = driver.findElement(By.id("ctl00_MainContent_username"));
+        // enter password
+        WebElement password = driver.findElement(By.id("ctl00_MainContent_password"));
+        // click login
+        WebElement loginButton = driver.findElement(By.id("ctl00_MainContent_login_button"));
+
+
+        actions.moveToElement(username).click()
+                .keyDown(Keys.SHIFT)
+                .sendKeys("test")
+                .keyUp(Keys.SHIFT)
+                // .doubleClick()    // choose all text
+                .keyDown(Keys.COMMAND).sendKeys("A")
+                .keyUp(Keys.COMMAND)
+                .pause(3000)
+                .keyDown(Keys.COMMAND).sendKeys("C")
+                .keyUp(Keys.COMMAND)
+                .pause(3000)
+                .sendKeys(Keys.TAB)
+                .keyDown(Keys.COMMAND).sendKeys("V")
+                .keyUp(Keys.COMMAND)
+                .pause(3000)
+                .moveToElement(loginButton)
+                .click()
+                .perform();
+
+
+        String actualText = driver.findElement(By.cssSelector(".error")).getText();
+
+        String expectedText="Invalid Login or Password.";
+
+        Assert.assertEquals(expectedText, actualText);
+
 
     }
 }
