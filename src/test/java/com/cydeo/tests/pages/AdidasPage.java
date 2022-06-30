@@ -2,11 +2,15 @@ package com.cydeo.tests.pages;
 
 
 
+import com.cydeo.tests.utilities.BrowserUtils;
 import com.cydeo.tests.utilities.Driver;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -75,6 +79,87 @@ public class AdidasPage {
         card.sendKeys(faker.finance().creditCard());
         month.sendKeys(String.valueOf(faker.number().numberBetween(1, 12)));
         year.sendKeys(String.valueOf(faker.number().numberBetween(2022, 2030)));
+
+    }
+
+    public int addProduct(String categoryName,String productName) {
+
+         /*
+
+        Locator for categories
+
+        //a[.="categoryName"]
+
+        Locator for products
+
+        //a[.="productsName"]
+
+
+         */
+        String categoryLocator="//a[.='"+categoryName+"']";
+        String productLocator="//a[.='"+productName+"']";
+
+        Driver.getDriver().findElement(By.xpath(categoryLocator)).click();
+        BrowserUtils.waitFor(1);
+
+        Driver.getDriver().findElement(By.xpath(productLocator)).click();
+        BrowserUtils.waitFor(1);
+
+        String priceString = purchasePrice.getText();
+        System.out.println(priceString);
+
+       /*
+       Time for java to make manipulation
+        */
+        String[] split = priceString.split(" ");
+        int price = Integer.parseInt(split[0].substring(1));
+
+        System.out.println(price);
+
+
+        addCart.click();
+        /*
+        BrowserUtils.waitFor(2);
+        Alert alert=Driver.getDriver().switchTo().alert();
+        alert.accept();
+
+        we an use BrowserUtils method to wait alert dynamicly
+         */
+
+        //BrowserUtils.waitForAlertIsPresent(10);
+
+
+        BrowserUtils.waitFor(2);
+        Alert alert=Driver.getDriver().switchTo().alert();
+        alert.accept();
+
+        homeLink.click();
+
+        return price;
+
+
+
+    }
+
+
+    public int removeProduct(String productName) {
+
+
+        String priceForProductLocator="//tbody//td[.='"+productName+"']/../td[3]";
+
+        String price = Driver.getDriver().findElement(By.xpath(priceForProductLocator)).getText();
+
+
+        String productDelete="//tbody//td[.='"+productName+"']/../td/a";
+
+        Driver.getDriver().findElement(By.xpath(productDelete)).click();
+
+        BrowserUtils.waitFor(3);
+
+
+        return Integer.parseInt(price);
+
+
 
     }
 }
