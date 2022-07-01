@@ -123,15 +123,14 @@ public class AdidasPage {
         Alert alert=Driver.getDriver().switchTo().alert();
         alert.accept();
 
-        we an use BrowserUtils method to wait alert dynamicly
+        we acn use BrowserUtils method to wait alerts dynamicly
          */
 
-        //BrowserUtils.waitForAlertIsPresent(10);
-
-
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitForAlertIsPresent(10);
         Alert alert=Driver.getDriver().switchTo().alert();
         alert.accept();
+
+
 
         homeLink.click();
 
