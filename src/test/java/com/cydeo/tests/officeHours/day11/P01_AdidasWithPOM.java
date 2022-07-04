@@ -6,7 +6,10 @@ import com.cydeo.tests.utilities.ConfigurationReader;
 import com.cydeo.tests.utilities.Driver;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Arrays;
 
 public class P01_AdidasWithPOM {
 
@@ -61,9 +64,53 @@ NOTE : We will create Page Object Model (POM) to solve this task
         adidasPage.fillForm();
 
         adidasPage.purchaseButton.click();
-        BrowserUtils.waitFor(2000);
+
+        // STEPS AFTER THIS POINT IS SHARED
 
 
+       //• Capture and log purchase Id and Amount.
+        String confirmationMessage = adidasPage.confirmation.getText();
+        System.out.println("confirmationMessage = " + confirmationMessage);
+
+        //Manipulation to get data to get an array
+        String[] confirmationArray = confirmationMessage.split("\n");
+        System.out.println("Arrays.toString(confirmationArray) = " + Arrays.toString(confirmationArray));
+
+        //get me ORDER ID
+        String orderID=confirmationArray[0].substring(confirmationArray[0].indexOf(" ")+1);
+        System.out.println("orderID = " + orderID);
+
+        //get me TOTAL PRICE
+        String[] totalPrice = confirmationArray[1].split(" ");
+        System.out.println("Arrays.toString(totalPrice) = " + Arrays.toString(totalPrice));
+
+        int actualPrice = Integer.parseInt(totalPrice[1]);
+
+        System.out.println("actualPrice = " + actualPrice);
+        System.out.println("expectedPrice = " + expectedPrice);
+
+        //• Assert purchase amount equals expected.
+        Assert.assertEquals(expectedPrice, actualPrice);
+        BrowserUtils.waitFor(2);
+        //• Click on "Ok"
+        adidasPage.OK.click();
+        BrowserUtils.waitFor(3);
+
+        adidasPage.cart.click();
+
+        //• Verify that there is no product in the cart
+        /*
+
+          We use table tr to get number of product from cart page
+            @FindBy(xpath = "//tbody//tr")
+            public List<WebElement> allProductFromCart;
+
+          if there is no product it will return EMPTY list.It means there is no product in cart
+
+         */
+        System.out.println(adidasPage.allProductFromCart.size());
+        BrowserUtils.waitFor(2);
+        Assert.assertTrue(adidasPage.allProductFromCart.size()==0);
 
 
 
